@@ -1,0 +1,86 @@
+.form_container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+  padding-bottom: 32px;
+  width: 100%;
+}
+
+.input_container {
+  display: flex;
+  flex-shrink: 1;
+  flex-direction: column;
+  row-gap: 10px;
+  width: 100%;
+}
+
+.getDiscount,
+.input {
+    padding: 16px 32px;
+    border-radius: var(--radius-small, 6px);
+    border: 1px solid var(--white, #fffff1);
+    font-size: 20px;
+    line-height: 130%;
+    width: 100%;
+}
+
+.input {
+    font-weight: 500;
+    color: var(--txt-white, #FFF);
+    outline: none;
+    width: 100%;
+}
+
+.input::-webkit-inner-spin-button,
+.input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.error_message {
+  color: red;
+  margin-right: auto;
+}
+
+.getDiscount{
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600;
+    border: none;
+}
+
+.getDiscount:hover {
+    background: #424436;
+    color: #FFFFFF;
+    transition: 0.3s;
+    border: none;
+}
+
+
+
+@media(max-width: 1000px) {
+    .form_container {
+        row-gap: 20px;
+    }
+
+    .input_container {
+        row-gap: var(--radius-big, 12px);
+    }
+
+    .getDiscount,
+    .input {
+        padding: 16px 20px;
+    }
+}
+
+@media(max-width: 480px) {
+    .form_container {
+        padding-bottom: 24px;
+    }
+
+    .getDiscount,
+    .input {
+        padding: var(--radius-big, 12px) 20px;
+        font-size: 18px;
+    }
+}
