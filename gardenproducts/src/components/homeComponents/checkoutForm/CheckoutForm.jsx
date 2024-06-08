@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { addSale } from "../../../utils/sale";
-
 import s from "../checkoutForm/CheckoutForm.module.css";
 
 export default function CheckoutForm({
@@ -11,7 +9,6 @@ export default function CheckoutForm({
   handleDiscountSubmit,
   handleOrderSubmit,
 }) {
-  const [resp, setResp] = useState({});
   const [showModal, setShowModal] = useState(false);
 
   const {
@@ -21,9 +18,8 @@ export default function CheckoutForm({
     reset,
   } = useForm({ mode: "onBlur" });
 
-  const submit = (new_product_obj) => {
+  const submit = () => {
     reset();
-    addSale(new_product_obj, setResp);
     handleDiscountSubmit();
     handleOrderSubmit();
     setShowModal(true);
