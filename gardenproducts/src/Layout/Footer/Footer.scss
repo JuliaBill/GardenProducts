@@ -1,0 +1,175 @@
+@import "../../style/variables";
+
+.footer {
+  margin-bottom: 5rem;
+  border: none;
+
+  &__title {
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 110%;
+    margin-bottom: 2.5rem;
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  &__heading {
+    color: $txt-grey;
+    font-size: 1.25rem;
+    line-height: 130%;
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 110%;
+  }
+
+  &__item {
+    background: $light-grey;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    width: 48.75rem;
+  }
+
+  &__item-right {
+    width: 34.25rem;
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    svg {
+      font-size: 3.1875rem;
+    }
+  }
+
+  &__map iframe {
+    border-radius: 0.75rem;
+    width: 100%;
+    height: 21.875rem;
+  }
+}
+
+// MEDIA Query
+@media (max-width: 1000px) {
+  .footer {
+    margin-bottom: 3.75rem;
+
+    &__title {
+      margin-bottom: 2rem;
+    }
+
+    &__contacts {
+      gap: 1.25rem;
+    }
+
+    &__block {
+      gap: 1.25rem;
+    }
+
+    &__item {
+      width: 29.375rem;
+    }
+
+    &__item-right {
+      width: 29.375rem;
+    }
+
+    &__socials{
+        gap: 1rem;
+    }
+
+    &__map iframe {
+      height: 15.625rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    &__title {
+      font-size: 3.5rem;
+    }
+
+    &__item {
+      width: 29.9375rem;
+    }
+
+    &__item-right {
+      width: 14.3125rem;
+    }
+
+    &__text{
+        font-size: 170%;
+    }
+
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    margin-bottom: 3.5rem;
+
+    &__title {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    &__contacts {
+      gap: 0.75rem;
+    }
+
+    &__block {
+      flex-direction: column;
+      gap: 0.75rem;
+      &:first-child .footer__item-right {
+        display: flex;
+        gap: 1.25rem;
+      }
+    }
+
+    &__item {
+      padding: 1.5rem;
+      width: 100%;
+    }
+
+    &__item-right {
+      width: 100%;
+    }
+
+    &__heading {
+      font-size: 1.125rem;
+      margin-bottom: 0.75rem;
+    }
+
+    &__socials{
+        gap: 0.75rem;
+    }
+
+    &__text {
+      font-size: 1.75rem;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .footer {
+    &__title {
+        font-size: 2.5rem;
+    }
+  }
+}
