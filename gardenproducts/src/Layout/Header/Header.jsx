@@ -17,8 +17,8 @@ import heart from '../../media/icons/heart.svg'
 import heartWhite from '../../media/icons/heartWhite.svg'
 
 import DiscountButton from '../../components/DiscountButton/DiscountButton'
-import BurgerMenu from './../../components/BurgerMenu/BurgerMenu'
-import DiscountPopUp from '../../components/DiscountPopUp/DiscountPopUp'
+// import BurgerMenu from './../../components/BurgerMenu/BurgerMenu'
+// import DiscountPopUp from '../../components/DiscountPopUp/DiscountPopUp'
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
