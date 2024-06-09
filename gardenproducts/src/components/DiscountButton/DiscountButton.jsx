@@ -1,4 +1,4 @@
-// DiscountButton.js
+
 import React from "react";
 import "./DiscountButton.scss";
 
