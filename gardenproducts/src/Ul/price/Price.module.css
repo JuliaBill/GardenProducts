@@ -1,0 +1,53 @@
+.real_price {
+    color: var(--txt-black, #282828);
+}
+
+.old_price {
+    color: var(--txt-grey, #8B8B8B);
+    font-weight: 500;
+    display: flex;
+    align-self: flex-end;
+    text-decoration: line-through;
+}
+
+.price_with_discount {
+    display: flex;
+    align-items: flex-start;
+}
+
+.sale_value {
+    padding: 4px 8px;
+    gap: 10px;
+    border-radius: var(--radius-small, 6px);
+    background: var(--green, #393);
+    color: var(--txt-white, #FFF);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+@media(max-width: 768px) {
+    .real_price {
+        font-size: 56px;
+    }
+
+    .old_price {
+        font-size: 32px;
+    }
+}
+
+@media(max-width: 480px) {
+    .real_price {
+        padding-right: 16px;
+        font-size: 48px;
+    }
+
+    .old_price {
+        font-size: 28px;
+    }
+}
+
+@media(max-width: 360px) {
+    .real_price {
+        font-size: 40px;
+    }
+}
