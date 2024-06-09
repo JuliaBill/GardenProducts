@@ -1,0 +1,17 @@
+@import '../../style/variables';
+
+.discount-button {
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 6px;
+  background-color: $green;
+  max-width: fit-content;
+  font-size: 89%;
+  line-height: 126%;
+  cursor: pointer;
+  transition: color 0.4s ease;
+  &:hover {
+    background-color:#92A134;
+  }
+}
