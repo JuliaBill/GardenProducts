@@ -5,10 +5,10 @@ import s from "./ProductContainer.module.css";
 
 const ProductContainer = () => {
   const { data: products }= useFetchAllProductsQuery();
+
   return (
     <div className={s.products_container}>
        
-      
     </div>
   );
 };

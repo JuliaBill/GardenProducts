@@ -1,4 +1,3 @@
-// src/store/api/apiSlice.js
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { BASE_URL } from "../../config";
 
@@ -8,6 +7,7 @@ export const apiSlice = createApi({
   endpoints: (builder) => ({
     fetchCategories: builder.query({
       query: () => "categories/all",
+      
     }),
     fetchCategoryByName: builder.query({
       query: (name) => `categories/${name}`,
