@@ -9,10 +9,10 @@ const ProductContainer = () => {
 
 
 
+
   return (
     <div className={s.products_container}>
        
-      
     </div>
   );
 };
