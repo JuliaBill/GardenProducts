@@ -63,9 +63,7 @@ const { theme } = useSelector((state) => state.theme)
      
         <div className={s.headerContainer}>
           <p className={s.header}>{product.title}</p>
-          <button className={s.icon_button} onClick={toggleLiked}>
-            <img src={isHeartClicked ? greenHeart : theme === 'light' ? heart : heartWhite} alt="Add to favorites" />
-          </button>
+         
         </div>
       
         <div className={s.priceBlock}>
@@ -80,21 +78,11 @@ const { theme } = useSelector((state) => state.theme)
       
         <div className={s.buttonsContainer}>
           <div className={s.countButtonContainer}>
-            <button className={s.countButton} onClick={decreaseCount}>
-              -
-            </button>
+           
             <p className={s.countValue}>{count}</p>
-            <button className={s.countButton} onClick={increaseCount}>
-              +
-            </button>
+           
           </div>
-          <button
-            className={`${s.addToCartButton} ${isAdded ? s.addedButton : s.notAddedButton}`}
-            disabled={count === 0} 
-            onClick={handleAddToCart}
-          >
-            {isAdded ? 'Added' : 'Add to Cart'}
-          </button>
+         
         </div>
       
         <div className={s.descriptionBlock}>
