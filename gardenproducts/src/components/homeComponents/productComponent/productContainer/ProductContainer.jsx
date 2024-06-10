@@ -13,6 +13,7 @@ const ProductContainer = () => {
   let randomDiscountedProducts = [];
 
   while (randomDiscountedProducts.length < 4) {
+ 
     const randomIndex = Math.floor(Math.random() * discountedProducts.length);
     const randomProduct = discountedProducts[randomIndex];
     if (!randomDiscountedProducts.includes(randomProduct)) {

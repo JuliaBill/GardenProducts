@@ -8,6 +8,7 @@ export const apiSlice = createApi({
   endpoints: (builder) => ({
     fetchCategories: builder.query({
       query: () => "categories/all",
+      
     }),
     fetchCategoryByName: builder.query({
       query: (name) => `categories/${name}`,
