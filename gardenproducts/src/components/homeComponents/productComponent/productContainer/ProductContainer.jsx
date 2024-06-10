@@ -22,9 +22,8 @@ const ProductContainer = () => {
 
   return (
     <div className={s.products_container}>
-      {randomDiscountedProducts?.map((product) => (
-        <ProductsItem key={product.id} el={product} />
-      ))}
+       
+      
     </div>
   );
 };
