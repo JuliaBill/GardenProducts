@@ -1,0 +1,60 @@
+.add_btn,
+.btn_green {
+    font-weight: 600;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    line-height: 130%;
+    border-radius: var(--radius-small, 6px);
+    background: var(--green, rgb(6, 235, 6));
+    color: var(--txt-white, #ffffff);
+}
+
+.card_btn .btn_green {
+    padding: 16px 56px;
+}
+
+.card_btn .add_btn {
+    padding: 16px 32px;
+    width: 100%;
+}
+
+.add_btn:hover {
+    background: var(--black, #424436);
+    transform: 0.3s;
+}
+
+.disabled_hover:hover {
+    background: var(--bg-light-grey, #f1f6d3);
+    outline: 1px solid var(--black, #424436);
+    color: #282828;
+}
+
+.submitted button {
+    border-radius: var(--radius-small, 6px);
+    background: var(--bg-light-grey, #f2f6d3);
+    outline: 1px solid var(--black, #282828);
+    color: #282828;
+}
+
+@media(max-width: 1000px) {
+    .card_btn .add_btn {
+        padding: 16px 20px;
+    }
+}
+
+@media(max-width: 480px) {
+
+    .add_btn,
+    .btn_green {
+        font-size: 18px;
+    }
+
+    .card_btn .add_btn {
+        padding: var(--radius-big, 12px) 20px;
+    }
+
+    .card_btn .btn_green {
+        padding: 12px 52px;
+    }
+}
