@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useDispatch } from 'react-redux'
 import ModalWindow from "../modalWindow/ModalWindow";
 import img_discount_form from "../../../media/images/Discount.svg";
 import s from "../discountForm/DiscountForm.module.scss";
 import CheckoutForm from "../checkoutForm/CheckoutForm";
 
 export default function DiscountForm() {
+   const dispatch = useDispatch()
   const [showModal, setShowModal] = useState(false);
   const [buttonText, setButtonText] = useState("Get a discount");
 
@@ -12,6 +14,7 @@ export default function DiscountForm() {
     console.log("Form submitted");
     setShowModal(true);
     setButtonText("Request Submitted");
+    
   };
 
   return (
