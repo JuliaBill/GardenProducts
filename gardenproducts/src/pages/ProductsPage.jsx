@@ -4,7 +4,7 @@ import { useFiltration } from '../utils/useFiltration'
 import { useSelector } from 'react-redux'
 import FiltrationBar from '../components/FiltrationBar/FiltrationBar'
 import ProductsItem from "../components/homeComponents/productComponent/productsItem/ProductsItem"
-
+import BreadCrumbs from '../components/BreadCrumbs/BreadCrumbs'
 export default function ProductsPage() {
   const { data } = useFetchAllProductsQuery()
 
@@ -15,9 +15,8 @@ export default function ProductsPage() {
 
   return (
     <section className="container">
-
+      <BreadCrumbs />
       <div className="grid">
-   
         <h2 className="grid__title">All products</h2>
 
         <FiltrationBar showDiscountOption={true} />
