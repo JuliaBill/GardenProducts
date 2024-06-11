@@ -2,7 +2,7 @@ import React from 'react'
 import { useFetchAllProductsQuery } from '../store/slices/apiSlice'
 import { useFiltration } from '../utils/useFiltration'
 import { useSelector } from 'react-redux'
-
+import BreadCrumbs from '../components/BreadCrumbs/BreadCrumbs'
 import ProductsItem from '../components/homeComponents/productComponent/productsItem/ProductsItem'
 import FiltrationBar from '../components/FiltrationBar/FiltrationBar'
 
@@ -20,9 +20,10 @@ export default function SalePage() {
 
   return (
     <section className="container">
+      <BreadCrumbs />
       <div className="grid">
-        <h2 className="grid__title">Discounted items</h2> 
-        <FiltrationBar showDiscountOption={false} /> 
+        <h2 className="grid__title">Discounted items</h2>
+        <FiltrationBar showDiscountOption={false} />
         <ul className="grid__wrapper">
           {products && products.map((product) => <ProductsItem key={product.id} el={product} />)}
         </ul>
