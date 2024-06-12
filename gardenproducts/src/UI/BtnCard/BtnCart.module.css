@@ -6,7 +6,7 @@
     cursor: pointer;
     line-height: 130%;
     border-radius: var(--radius-small, 6px);
-    background: var(--green, rgb(6, 235, 6));
+    background: var(--green, #92a134);
     color: var(--txt-white, #ffffff);
 }
 
@@ -25,7 +25,7 @@
 }
 
 .disabled_hover:hover {
-    background: var(--bg-light-grey, #f1f6d3);
+    background: var(--bg-light-grey, #f2f6d3);
     outline: 1px solid var(--black, #424436);
     color: #282828;
 }
@@ -33,8 +33,8 @@
 .submitted button {
     border-radius: var(--radius-small, 6px);
     background: var(--bg-light-grey, #f2f6d3);
-    outline: 1px solid var(--black, #282828);
-    color: #282828;
+    outline: 1px solid var(--black, #424436);
+    color: #424436;
 }
 
 @media(max-width: 1000px) {
