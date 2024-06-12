@@ -1,5 +1,5 @@
 .real_price {
-    color: var(--txt-black, #282828);
+    color: var(--txt-black, #3a3c2e);
 }
 
 .old_price {
@@ -19,7 +19,7 @@
     padding: 4px 8px;
     gap: 10px;
     border-radius: var(--radius-small, 6px);
-    background: var(--green, #393);
+    background: var(--green, #92a134);
     color: var(--txt-white, #FFF);
     font-size: 20px;
     font-weight: 600;

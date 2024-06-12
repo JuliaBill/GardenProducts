@@ -1,0 +1,29 @@
+.empty_cart p {
+    padding-bottom: 32px;
+    font-size: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.btn {
+    width: 316px;
+}
+
+@media (max-width: 768px) {
+    .empty_cart p {
+        white-space: normal;
+    }
+}
+
+@media (max-width: 480px) {
+    .empty_cart p {
+        padding-bottom: 24px;
+        font-size: 18px;
+        white-space: normal;
+    }
+
+    .btn {
+        width: 210px;
+        white-space: nowrap;
+    }
+}
