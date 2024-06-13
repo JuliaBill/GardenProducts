@@ -1,31 +1,29 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import ModalWindow from "../modalWindow/ModalWindow";
-import img_discount_form from "../../../media/images/Discount.svg";
-import s from "../discountForm/DiscountForm.module.scss";
-import CheckoutForm from "../checkoutForm/CheckoutForm";
+import { applyDiscount } from '../../../store/slices/cartSlice'
+
+import ModalWindow from '../modalWindow/ModalWindow'
+import img_discount_form from '../../../media/images/Discount.svg'
+import s from '../discountForm/DiscountForm.module.scss'
+import CheckoutForm from '../checkoutForm/CheckoutForm'
 
 export default function DiscountForm() {
-   const dispatch = useDispatch()
-  const [showModal, setShowModal] = useState(false);
-  const [buttonText, setButtonText] = useState("Get a discount");
+  const dispatch = useDispatch()
+  const [showModal, setShowModal] = useState(false)
+  const [buttonText, setButtonText] = useState('Get a discount')
 
   const handleDiscountSubmit = (e) => {
-    console.log("Form submitted");
-    setShowModal(true);
-    setButtonText("Request Submitted");
-    
-  };
+    console.log('Form submitted')
+    setShowModal(true)
+    setButtonText('Request Submitted')
+    dispatch(applyDiscount()) 
+  }
 
   return (
     <div className={s.form_wrapper} id="discount">
       <h2 className={s.form_text}>5% off on the first order</h2>
       <div className={s.inform}>
-        <img
-          src={img_discount_form}
-          alt="Discount form"
-          className={s.discount_img}
-        />
+        <img src={img_discount_form} alt="Discount form" className={s.discount_img} />
         <div className={s.check_block}>
           <CheckoutForm
             handleOrderSubmit={() => {}}
@@ -43,5 +41,5 @@ export default function DiscountForm() {
         </ModalWindow>
       )}
     </div>
-  );
+  )
 }

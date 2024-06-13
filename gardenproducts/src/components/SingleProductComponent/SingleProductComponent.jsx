@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { useFetchProductByIdQuery } from '../../store/slices/apiSlice.js'
 import { BASE_URL } from '../../config.js' 
-import s from './style.module.scss'
+
+import s from './style.module.scss' 
 import heart from '../../media/icons/heart.svg' 
 import heartWhite from '../../media/icons/heartWhite.svg'
 import greenHeart from '../../media/icons/greenHeart.svg'
 import { addProduct } from '../../store/slices/cartSlice.js'
-
+import BtnCard, { ButtonTypes } from '../../UI/BtnCard/BtnCart.jsx'
 
 const Modal = ({ src, alt, onClose }) => (
   <div className={s.modalBackdrop} onClick={onClose}>
-    <img src={src} alt={alt} className={s.modalImage} /> 
+    <img src={src} alt={alt} className={s.modalImage} />
   </div>
 )
 
@@ -20,15 +22,16 @@ export default function SingleProductComponent() {
 
   const { id } = useParams() 
 
-  const { data: [product] = [] } = useFetchProductByIdQuery(id)
+  const { data: [product] = [], isLoading, isError } = useFetchProductByIdQuery(id)
 
   const { theme } = useSelector((state) => state.theme)
   const dispatch = useDispatch()
   const [isAdded, setIsAdded] = useState(false)
 
+
   const handleAddToCart = (e) => {
     e.preventDefault()
-    dispatch(addProduct({ ...product, quantity: 1 })) 
+    dispatch(addProduct({ ...product, quantity: 1 }))
     setIsAdded(true)
     setTimeout(() => {
       setIsAdded(false)
@@ -44,6 +47,10 @@ export default function SingleProductComponent() {
 
   const toggleTruncate = () => setIsTruncated(!isTruncated)
 
+
+  if (isLoading) return <p>Loading...</p>
+  if (isError || !product) return <p>Product not found or error loading the product.</p>
+
   const increaseCount = () => setCount((prev) => prev + 1)
   const decreaseCount = () => setCount((prev) => (prev > 0 ? prev - 1 : 0))
 
@@ -53,11 +60,9 @@ export default function SingleProductComponent() {
   const openModal = () => setIsModalOpen(true)
   const closeModal = () => setIsModalOpen(false)
 
-
   return (
     <>
       <div className={s.card}>
-      
         <div className={s.leftBlock}>
           <img src={imgLink} alt="productImage" className={s.productImg} onClick={openModal} />
           {product.discont_price && (
@@ -66,12 +71,14 @@ export default function SingleProductComponent() {
             </div>
           )}
         </div>
+    
         <div className={s.headerContainer}>
           <p className={s.header}>{product.title}</p>
-          <button className={s.icon_button}>
-            <img />
+          <button className={s.icon_button} >
+            <img  />
           </button>
         </div>
+   
         <div className={s.priceBlock}>
           <p className={s.priceP}>{product.discont_price ? `$${product.discont_price}` : `$${product.price}`}</p>
           {product.discont_price && <p className={s.oldPriceP}>{`$${product.price}`}</p>}
@@ -81,6 +88,7 @@ export default function SingleProductComponent() {
             </div>
           )}
         </div>
+    
         <div className={s.buttonsContainer}>
           <div className={s.countButtonContainer}>
             <button className={s.countButton} onClick={decreaseCount}>
@@ -99,11 +107,9 @@ export default function SingleProductComponent() {
             {isAdded ? 'Added' : 'Add to Cart'}
           </button>
         </div>
-     
         <div className={s.descriptionBlock}>
           <p className={s.descriptionHeader}>Description</p>
           <p className={s.descriptionText}>{isTruncated ? truncatedDescription : product.description}</p>
-       
           {isTruncated && (
             <a className="readMore" onClick={toggleTruncate}>
               Read more
