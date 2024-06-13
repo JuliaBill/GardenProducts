@@ -17,7 +17,7 @@ export default function CheckoutForm({ classInput, classBtn, txtBtn, handleDisco
 
   const submit = (new_product_obj) => {
     reset()
-    // addSale(new_product_obj, setResp)
+    addSale(new_product_obj, setResp)
     handleDiscountSubmit()
     handleOrderSubmit()
     setShowModal(true)

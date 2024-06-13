@@ -1,12 +1,12 @@
-import React from "react";
-import s from "./ModalWindow.module.scss";
+import React from 'react'
+import s from './ModalWindow.module.scss'
 
 export default function ModalWindow({ onClose, children }) {
   const handleBackdropClick = (event) => {
     if (event.target === event.currentTarget) {
-      onClose();
+      onClose()
     }
-  };
+  }
 
   return (
     <div className={s.modal} onClick={handleBackdropClick}>
@@ -20,5 +20,5 @@ export default function ModalWindow({ onClose, children }) {
         {children}
       </div>
     </div>
-  );
+  )
 }

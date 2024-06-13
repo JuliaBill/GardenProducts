@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import FiltrationBar from '../components/FiltrationBar/FiltrationBar'
 import ProductsItem from "../components/homeComponents/productComponent/productsItem/ProductsItem"
 import BreadCrumbs from '../components/BreadCrumbs/BreadCrumbs'
+
 export default function ProductsPage() {
   const { data } = useFetchAllProductsQuery()
 
