@@ -1,6 +1,6 @@
 import React from 'react'
 
-import TitleBreadCrumbs from '../UI/titleBreadCrumps/TitleBreadCrumps'
+import TitleBreadCrumbs from '../UI/titlebreadCrumbs/TitleBreadCrumbs'
 import s from '../components/NotFound/NotFound.module.css'
 import CartComponent from './../components/CartComponents/CartComponent/CartComponent'
 

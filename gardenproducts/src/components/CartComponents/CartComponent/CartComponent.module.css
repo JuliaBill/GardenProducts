@@ -1,4 +1,4 @@
-@import '../../../style/_variables';
+@import '../../../style/_variables.scss';
 .container {
     display: flex;
     justify-content: space-between;
