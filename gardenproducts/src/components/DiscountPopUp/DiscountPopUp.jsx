@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useFetchAllProductsQuery } from '../../store/slices/apiSlice'
 import { BASE_URL } from '../../config'
 import { Link } from 'react-router-dom'
-import heart from '../../media/icons/heart.svg' 
+import heart from '../../media/icons/heart.svg'
 import greenHeart from '../../media/icons/greenHeart.svg'
 import './DiscountPopUp.scss'
 
