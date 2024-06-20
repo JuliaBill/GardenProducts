@@ -1,6 +1,6 @@
 import img_404 from '../../media/images/404.svg'
 import s from './NotFound.module.css'
-import BtnCart, { ButtonTypes } from '../../UI/BtnCard/BtnCart'
+import BtnCart, { ButtonTypes } from '../../UI/btnCard/BtnCart'
 
 export default function NotFound() {
   return (
