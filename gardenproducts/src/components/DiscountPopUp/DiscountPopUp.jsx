@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useFetchAllProductsQuery } from '../../store/slices/apiSlice'
 import { addProduct } from '../../store/slices/cartSlice'
 import { BASE_URL } from '../../config'
+import { addLikedProduct, removeLikedProduct } from '../../store/slices/likedProductsSlice'
 import { Link } from 'react-router-dom'
 import heart from '../../media/icons/heart.svg' 
 import greenHeart from '../../media/icons/greenHeart.svg'
@@ -10,11 +11,11 @@ import './DiscountPopUp.scss'
 
 const DiscountPopUp = ({ onClose }) => {
   const dispatch = useDispatch()
-  const { data: products } = useFetchAllProductsQuery() 
+  const { data: products } = useFetchAllProductsQuery()
   const [discountedProduct, setDiscountedProduct] = useState(null)
-  const [isOpen, setIsOpen] = useState(false) 
-  const [isDiscountProductAdded, setIsDiscountProductAdded] = useState(false) 
-  const [isModalOpen, setIsModalOpen] = useState(false) 
+  const [isOpen, setIsOpen] = useState(false)
+  const [isDiscountProductAdded, setIsDiscountProductAdded] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleBackdropClick = (event) => {
     if (event.target === event.currentTarget) {
@@ -22,7 +23,6 @@ const DiscountPopUp = ({ onClose }) => {
     }
   }
 
-  
   useEffect(() => {
     const today = new Date().toDateString()
     const lastDiscountDate = localStorage.getItem('lastDiscountDate')
@@ -41,13 +41,12 @@ const DiscountPopUp = ({ onClose }) => {
         const randomProduct = nonDiscountedProducts[Math.floor(Math.random() * nonDiscountedProducts.length)]
         setDiscountedProduct({
           ...randomProduct,
-          discountedPrice: +(randomProduct.price * 0.5).toFixed(2), 
+          discountedPrice: +(randomProduct.price * 0.5).toFixed(2),
         })
         setIsOpen(true)
       }
     }
   }, [products, isDiscountProductAdded])
-
 
   const handleAddToCart = () => {
     if (discountedProduct) {
@@ -55,7 +54,7 @@ const DiscountPopUp = ({ onClose }) => {
         ...discountedProduct,
         quantity: 1,
         price: discountedProduct.discountedPrice,
-        oldPrice: discountedProduct.price, 
+        oldPrice: discountedProduct.price,
       }
       dispatch(addProduct(discountedProductWithOldPrice))
 
@@ -73,6 +72,17 @@ const DiscountPopUp = ({ onClose }) => {
     setDiscountedProduct(null)
   }
 
+  const likedProducts = useSelector((state) => state.likedProducts.likedProducts)
+  const isLiked = likedProducts.some((likedProduct) => likedProduct?.id === discountedProduct?.id)
+
+  
+  const toggleLiked = () => {
+    if (isLiked) {
+      dispatch(removeLikedProduct(discountedProduct))
+    } else {
+      dispatch(addLikedProduct(discountedProduct))
+    }
+  }
 
   return (
     <div className={`discount-popup ${isOpen ? 'open' : ''}`} onClick={handleBackdropClick}>
@@ -89,7 +99,10 @@ const DiscountPopUp = ({ onClose }) => {
               <Link to={`/products/${discountedProduct.id}`}>
                 <img src={`${BASE_URL}/${discountedProduct.image}`} alt={discountedProduct.name} />
               </Link>
-
+              <span className="discount-popup__discont">-50%</span>
+              <button className="discount-popup__icon" onClick={toggleLiked}>
+                <img src={isLiked ? greenHeart : heart} alt="Add to favorites" />
+              </button>
             </div>
             <div className="discount-popup__product-details">
               <Link to={`/products/${discountedProduct.id}`}>

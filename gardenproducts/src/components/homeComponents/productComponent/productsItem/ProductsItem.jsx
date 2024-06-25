@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { addLikedProduct, removeLikedProduct } from '../../../../store/slices/likedProductsSlice'
 import { addProduct, deleteProduct } from '../../../../store/slices/cartSlice'
 import { BASE_URL } from '../../../../config'
 import Price from '../../../../UI/price/Price'
@@ -14,10 +15,15 @@ import greenBag from '../../../../media/icons/greenBag.svg'
 
 export default function ProductItem({ el }) {
   const dispatch = useDispatch()
-
+  const [isHeartClicked, setIsHeartClicked] = useState(() => {
+    const heartState = localStorage.getItem(`isHeartClicked_${el.id}`)
+    return heartState ? JSON.parse(heartState) : false
+  })
 
   const cartProducts = useSelector((state) => state.cart.products)
   const isProductInCart = cartProducts.some((product) => product.id === el.id)
+  const likedProducts = useSelector((state) => state.likedProducts.likedProducts)
+  const isLiked = likedProducts.some((likedProduct) => likedProduct?.id === el.id)
 
   useEffect(() => {
     const bagState = localStorage.getItem(`isBagClicked_${el.id}`)
@@ -28,12 +34,23 @@ export default function ProductItem({ el }) {
 
   const [isBagClicked, setIsBagClicked] = useState(false)
 
-
+  const handleToggleLiked = () => {
+    if (el) {
+      const newState = !isHeartClicked
+      setIsHeartClicked(newState)
+      if (!isLiked) {
+        dispatch(addLikedProduct(el))
+      } else {
+        dispatch(removeLikedProduct(el))
+      }
+      localStorage.setItem(`isHeartClicked_${el.id}`, JSON.stringify(newState))
+    }
+  }
 
   const handleToggleCart = () => {
     if (el) {
       const newState = !isProductInCart
-      setIsBagClicked(newState) 
+      setIsBagClicked(newState) // Устанавливаем состояние isBagClicked в зависимости от наличия товара в корзине
       if (!isProductInCart) {
         dispatch(addProduct({ ...el, quantity: 1 }))
       } else {
@@ -56,8 +73,8 @@ export default function ProductItem({ el }) {
           <img src={`${BASE_URL}${el.image}`} alt={el.title} className={s.products_img} />
         </Link>
         <div className={s.icons_wrapper}>
-          <button className={s.icon_button} >
-            <img />
+          <button className={s.icon_button} onClick={handleToggleLiked}>
+            <img src={isLiked ? greenHeart : heart} alt="Add to favorites" />
           </button>
           <button className={s.icon_button} onClick={handleToggleCart}>
             <img src={isProductInCart ? greenBag : shoppingBag1} alt="Add to cart" />

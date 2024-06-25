@@ -17,7 +17,7 @@ import heart from '../../media/icons/heart.svg'
 import heartWhite from '../../media/icons/heartWhite.svg'
 
 import DiscountButton from '../../components/DiscountButton/DiscountButton'
-// import BurgerMenu from './../../components/BurgerMenu/BurgerMenu'
+import BurgerMenu from './../../components/BurgerMenu/BurgerMenu'
 import DiscountPopUp from '../../components/DiscountPopUp/DiscountPopUp'
 
 const Header = () => {
@@ -30,24 +30,27 @@ const Header = () => {
   const cartProducts = useSelector((state) => state.cart.products)
   const cartProductsCount = cartProducts.length
 
+  const likedProducts = useSelector((state) => state.likedProducts.likedProducts)
+  const likedProductsCount = likedProducts.length
+
   const { theme } = useSelector((state) => state.theme)
 
-  const location = useLocation() 
+  const location = useLocation()
   const dispatch = useDispatch()
 
   const handleThemeToggle = () => {
     dispatch(toggleTheme())
   }
 
-  const [isOpen, setIsOpen] = useState() 
+  const [isOpen, setIsOpen] = useState()
   const closeMenu = () => {
     setIsOpen(false)
-  } 
+  }
   const activeLink = 'header__navigation__ul-nav-link header__navigation__ul-nav-link-active'
   const normalLink = 'header__navigation__ul-nav-link'
   const getLinkClass = (path) => {
     return location.pathname === path ? activeLink : normalLink
-  } 
+  }
   return (
     <div className="wrapper">
       <header className={`header ${theme} container`}>
@@ -59,19 +62,18 @@ const Header = () => {
             src={theme === 'light' ? dayToggle : nightToggle}
             alt="Theme"
             className="header__logo-section__btnChangeTheme"
-            
           />
         </div>
         <nav className={`header__navigation ${theme} `}>
           <DiscountButton className="discount-button" onClick={handleDiscountButtonClick} />
           <ul className={`header__navigation__ul ${theme}`}>
             <li className="header__navigation__ul-item">
-              <NavLink to="/" className={`${getLinkClass('/')} ${theme}`} >
+              <NavLink to="/" className={`${getLinkClass('/')} ${theme}`}>
                 Main Page
               </NavLink>
             </li>
             <li className="header__navigation__ul-item">
-              <NavLink to="/categories" className={`${getLinkClass('/categories')} ${theme}`} >
+              <NavLink to="/categories" className={`${getLinkClass('/categories')} ${theme}`}>
                 Categories
               </NavLink>
             </li>
@@ -81,7 +83,7 @@ const Header = () => {
               </NavLink>
             </li>
             <li className="header__navigation__ul-item">
-              <NavLink to="/sales" className={`${getLinkClass('/sales')} ${theme}`} >
+              <NavLink to="/sales" className={`${getLinkClass('/sales')} ${theme}`}>
                 All sales
               </NavLink>
             </li>
@@ -91,7 +93,7 @@ const Header = () => {
           <li className="header__action__ul-item">
             <NavLink to="/favorites" className={`header__action__ul-item icon ${theme}`}>
               <div className="cart-count-container">
-                {<span className="cart-count heart"></span>}
+                {likedProductsCount > 0 && <span className="cart-count heart">{likedProductsCount}</span>}
                 <img src={theme === 'light' ? heart : heartWhite} alt="favourites" />
               </div>
             </NavLink>
@@ -105,7 +107,7 @@ const Header = () => {
             </NavLink>
           </li>
           <li className="header__action__ul-item">
-            
+            <BurgerMenu theme={theme} isActive={isOpen} onClick={() => setIsOpen(!isOpen)} />
           </li>
         </ul>
       </header>
