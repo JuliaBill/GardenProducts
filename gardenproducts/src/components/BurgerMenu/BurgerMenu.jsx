@@ -7,7 +7,7 @@ const BurgerMenu = ({ isActive, onClick, theme }) => {
       onClick={() => onClick()} 
       className={`header__menu ${theme} ${isActive === true ? 'active' : ''} ${isActive === false ? 'unactive' : ''}`} 
     >
-      <span></span> { }
+      <span></span> 
     </button>
   )
 }

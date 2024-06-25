@@ -7,7 +7,7 @@ import { toggleTheme } from '../../store/slices/themeSlice'
 import './Header.scss'
 import '../../style/app.scss'
 
-import { SlHeart as FavIcon } from 'react-icons/sl'
+// import { SlHeart as FavIcon } from 'react-icons/sl'
 import logo from '../../media/icons/logo.svg'
 import dayToggle from '../../media/icons/modeDay.svg'
 import nightToggle from '../../media/icons/modeNight.svg'
@@ -35,22 +35,20 @@ const Header = () => {
 
   const { theme } = useSelector((state) => state.theme)
 
-  const location = useLocation()
+
   const dispatch = useDispatch()
 
   const handleThemeToggle = () => {
     dispatch(toggleTheme())
   }
 
-  const [isOpen, setIsOpen] = useState()
-  const closeMenu = () => {
-    setIsOpen(false)
-  }
+
   const activeLink = 'header__navigation__ul-nav-link header__navigation__ul-nav-link-active'
-  const normalLink = 'header__navigation__ul-nav-link'
+  const normalLink = 'header__navigation__ul-nav-link' // константы для добавления активного и неактивного класса навигации
+
   const getLinkClass = (path) => {
     return location.pathname === path ? activeLink : normalLink
-  }
+
   return (
     <div className="wrapper">
       <header className={`header ${theme} container`}>
@@ -62,28 +60,29 @@ const Header = () => {
             src={theme === 'light' ? dayToggle : nightToggle}
             alt="Theme"
             className="header__logo-section__btnChangeTheme"
+
           />
         </div>
-        <nav className={`header__navigation ${theme} `}>
+        <nav className={`header__navigation ${theme} ${isOpen ? 'active' : ''}`}>
           <DiscountButton className="discount-button" onClick={handleDiscountButtonClick} />
           <ul className={`header__navigation__ul ${theme}`}>
             <li className="header__navigation__ul-item">
-              <NavLink to="/" className={`${getLinkClass('/')} ${theme}`}>
+
                 Main Page
               </NavLink>
             </li>
             <li className="header__navigation__ul-item">
-              <NavLink to="/categories" className={`${getLinkClass('/categories')} ${theme}`}>
+
                 Categories
               </NavLink>
             </li>
             <li className="header__navigation__ul-item">
-              <NavLink to="/products" className={`${getLinkClass('/products')} ${theme}`} onClick>
+              <NavLink to="/products" className={`${getLinkClass('/products')} ${theme}`} onClick={closeMenu}>
                 All products
               </NavLink>
             </li>
             <li className="header__navigation__ul-item">
-              <NavLink to="/sales" className={`${getLinkClass('/sales')} ${theme}`}>
+
                 All sales
               </NavLink>
             </li>

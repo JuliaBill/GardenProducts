@@ -5,7 +5,7 @@ import { addProduct } from '../../store/slices/cartSlice'
 import { BASE_URL } from '../../config'
 import { addLikedProduct, removeLikedProduct } from '../../store/slices/likedProductsSlice'
 import { Link } from 'react-router-dom'
-import heart from '../../media/icons/heart.svg' 
+import heart from '../../media/icons/heart.svg'
 import greenHeart from '../../media/icons/greenHeart.svg'
 import './DiscountPopUp.scss'
 
@@ -50,6 +50,7 @@ const DiscountPopUp = ({ onClose }) => {
 
   const handleAddToCart = () => {
     if (discountedProduct) {
+      // Добавляем продукт со скидкой 50%
       const discountedProductWithOldPrice = {
         ...discountedProduct,
         quantity: 1,
@@ -60,6 +61,7 @@ const DiscountPopUp = ({ onClose }) => {
 
       setIsDiscountProductAdded(true)
 
+// Сохраняем текущую дату в localStorage
       const today = new Date().toDateString()
       localStorage.setItem('lastDiscountDate', today)
 
