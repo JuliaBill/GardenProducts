@@ -35,6 +35,7 @@ const Header = () => {
 
   const { theme } = useSelector((state) => state.theme)
 
+  const location = useLocation() // Получаем текущий URL
 
   const dispatch = useDispatch()
 
@@ -42,12 +43,18 @@ const Header = () => {
     dispatch(toggleTheme())
   }
 
+  const [isOpen, setIsOpen] = useState() //используем useState для открытого и закрытого состояния бургер-меню
+
+  const closeMenu = () => {
+    setIsOpen(false)
+  } // автоматическое закрытие бургер-меню при нажатии на категорию
 
   const activeLink = 'header__navigation__ul-nav-link header__navigation__ul-nav-link-active'
   const normalLink = 'header__navigation__ul-nav-link' // константы для добавления активного и неактивного класса навигации
 
   const getLinkClass = (path) => {
     return location.pathname === path ? activeLink : normalLink
+  } // функциия для активной вкладки
 
   return (
     <div className="wrapper">
@@ -60,19 +67,19 @@ const Header = () => {
             src={theme === 'light' ? dayToggle : nightToggle}
             alt="Theme"
             className="header__logo-section__btnChangeTheme"
-
+            onClick={handleThemeToggle}
           />
         </div>
         <nav className={`header__navigation ${theme} ${isOpen ? 'active' : ''}`}>
           <DiscountButton className="discount-button" onClick={handleDiscountButtonClick} />
           <ul className={`header__navigation__ul ${theme}`}>
             <li className="header__navigation__ul-item">
-
+              <NavLink to="/" className={`${getLinkClass('/')} ${theme}`} onClick={closeMenu}>
                 Main Page
               </NavLink>
             </li>
             <li className="header__navigation__ul-item">
-
+              <NavLink to="/categories" className={`${getLinkClass('/categories')} ${theme}`} onClick={closeMenu}>
                 Categories
               </NavLink>
             </li>
@@ -82,7 +89,7 @@ const Header = () => {
               </NavLink>
             </li>
             <li className="header__navigation__ul-item">
-
+              <NavLink to="/sales" className={`${getLinkClass('/sales')} ${theme}`} onClick={closeMenu}>
                 All sales
               </NavLink>
             </li>
