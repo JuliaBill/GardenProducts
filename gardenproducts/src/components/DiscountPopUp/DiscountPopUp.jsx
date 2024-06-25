@@ -51,6 +51,7 @@ const DiscountPopUp = ({ onClose }) => {
 
   const handleAddToCart = () => {
     if (discountedProduct) {
+      // Добавляем продукт со скидкой 50%
       const discountedProductWithOldPrice = {
         ...discountedProduct,
         quantity: 1,
@@ -61,6 +62,7 @@ const DiscountPopUp = ({ onClose }) => {
 
       setIsDiscountProductAdded(true)
 
+// Сохраняем текущую дату в localStorage
       const today = new Date().toDateString()
       localStorage.setItem('lastDiscountDate', today)
 
