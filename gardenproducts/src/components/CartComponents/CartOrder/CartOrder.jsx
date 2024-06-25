@@ -10,7 +10,7 @@ import { BASE_URL } from '../../../config'
 
 export default function CartOrder({ basketCart }) {
   const dispatch = useDispatch()
-  const [sendingOrder, setSendingOrder] = useState(false)
+  
   const [showModal, setShowModal] = useState(false)
 
   const handleDiscountSubmit = () => {

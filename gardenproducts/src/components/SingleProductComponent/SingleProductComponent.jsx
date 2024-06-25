@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { useFetchProductByIdQuery } from '../../store/slices/apiSlice.js'
 import { BASE_URL } from '../../config.js' 
-
+import { addLikedProduct, removeLikedProduct } from '../../store/slices/likedProductsSlice.js'
 import s from './style.module.scss' 
 import heart from '../../media/icons/heart.svg' 
 import heartWhite from '../../media/icons/heartWhite.svg'
@@ -25,9 +25,15 @@ export default function SingleProductComponent() {
   const { data: [product] = [], isLoading, isError } = useFetchProductByIdQuery(id)
 
   const { theme } = useSelector((state) => state.theme)
+  const likedProducts = useSelector((state) => state.likedProducts.likedProducts)
   const dispatch = useDispatch()
   const [isAdded, setIsAdded] = useState(false)
+ const [isHeartClicked, setIsHeartClicked] = useState(false)
 
+   useEffect(() => {
+     const isProductLiked = likedProducts.some((likedProduct) => likedProduct.id === product?.id)
+     setIsHeartClicked(isProductLiked)
+   }, [likedProducts, product])
 
   const handleAddToCart = (e) => {
     e.preventDefault()
@@ -47,6 +53,18 @@ export default function SingleProductComponent() {
 
   const toggleTruncate = () => setIsTruncated(!isTruncated)
 
+    const toggleLiked = () => {
+      setIsHeartClicked(!isHeartClicked)
+      if (!isHeartClicked) {
+        dispatch(addLikedProduct(product))
+      } else {
+        dispatch(removeLikedProduct(product))
+      }
+    }
+
+    useEffect(() => {
+      localStorage.setItem(`isHeartClicked_${id}`, JSON.stringify(isHeartClicked))
+    }, [id, isHeartClicked])
 
   if (isLoading) return <p>Loading...</p>
   if (isError || !product) return <p>Product not found or error loading the product.</p>
@@ -71,14 +89,14 @@ export default function SingleProductComponent() {
             </div>
           )}
         </div>
-    
+
         <div className={s.headerContainer}>
           <p className={s.header}>{product.title}</p>
-          <button className={s.icon_button} >
-            <img  />
+          <button className={s.icon_button} onClick={toggleLiked}>
+            <img />
           </button>
         </div>
-   
+
         <div className={s.priceBlock}>
           <p className={s.priceP}>{product.discont_price ? `$${product.discont_price}` : `$${product.price}`}</p>
           {product.discont_price && <p className={s.oldPriceP}>{`$${product.price}`}</p>}
@@ -88,7 +106,7 @@ export default function SingleProductComponent() {
             </div>
           )}
         </div>
-    
+
         <div className={s.buttonsContainer}>
           <div className={s.countButtonContainer}>
             <button className={s.countButton} onClick={decreaseCount}>
@@ -101,7 +119,7 @@ export default function SingleProductComponent() {
           </div>
           <button
             className={`${s.addToCartButton} ${isAdded ? s.addedButton : s.notAddedButton}`}
-            disabled={count === 0} 
+            disabled={count === 0}
             onClick={handleAddToCart}
           >
             {isAdded ? 'Added' : 'Add to Cart'}

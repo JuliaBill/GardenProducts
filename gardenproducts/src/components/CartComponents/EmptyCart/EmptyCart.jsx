@@ -1,6 +1,6 @@
 import React from 'react'
 import s from './EmptyCart.module.css'
-import BtnCard, { ButtonTypes } from '../../../UI/btnCard/BtnCart'
+import BtnCard, { ButtonTypes } from '../../../UI/BtnCard/BtnCart'
 
 export default function EmptyCart() {
   return (
