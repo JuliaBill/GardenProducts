@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { maxPriceChange, minPriceChange, discountChange, sortedChange } from '../../store/slices/filterSlice'
 
-// import './FiltrationBar.scss'
+import './FiltrationBar.scss'
 
 const FiltrationBar = ({ showDiscountOption }) => {
 

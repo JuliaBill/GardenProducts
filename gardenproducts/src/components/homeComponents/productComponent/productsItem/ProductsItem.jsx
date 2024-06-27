@@ -5,7 +5,7 @@ import { addLikedProduct, removeLikedProduct } from '../../../../store/slices/li
 import { addProduct, deleteProduct } from '../../../../store/slices/cartSlice'
 import { BASE_URL } from '../../../../config'
 import Price from '../../../../UI/price/Price'
-import BtnCart, { ButtonTypes } from '../../../../UI/BtnCard/BtnCart'
+import BtnCart, { ButtonTypes } from '../../../../UI/btnCard/BtnCart'
 
 import s from './ProductsItem.module.css'
 import heart from '../../../../media/icons/heart.svg'

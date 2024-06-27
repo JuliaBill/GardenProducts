@@ -12,7 +12,7 @@
 
 .price_with_discount {
     display: flex;
-    align-items: flex-start;
+    align-items: flex-start;   
 }
 
 .sale_value {
