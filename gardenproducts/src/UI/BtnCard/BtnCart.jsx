@@ -40,7 +40,7 @@ export default function BtnCard({ type }) {
 
       {type === ButtonTypes.SHOPPING && (
         <Link to={'/products'}>
-          <button className={s.btn_green}>Continue shopping</button>
+          <button className={s.btn_green}>Go Home</button>
         </Link>
       )}
     </div>
