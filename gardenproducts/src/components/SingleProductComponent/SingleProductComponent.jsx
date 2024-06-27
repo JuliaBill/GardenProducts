@@ -10,7 +10,7 @@ import heart from '../../media/icons/heart.svg'
 import heartWhite from '../../media/icons/heartWhite.svg'
 import greenHeart from '../../media/icons/greenHeart.svg'
 import { addProduct } from '../../store/slices/cartSlice.js'
-import BtnCard, { ButtonTypes } from '../../UI/btnCard/BtnCart.jsx'
+import BtnCard, { ButtonTypes }from '../../UI/BtnCard/BtnCart.jsx'
 
 const Modal = ({ src, alt, onClose }) => (
   <div className={s.modalBackdrop} onClick={onClose}>
