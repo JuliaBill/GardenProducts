@@ -1,0 +1,45 @@
+/* SkeletonComponent.module.css */
+
+.skeleton-container {
+    width: 100%;
+    padding: 30px;
+    background-color: #fefdfd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .skeleton-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 40px; /* Отступ между столбцами в сетке */
+  }
+  
+  .skeleton-square {
+    width: 100%;
+    padding-top: 100%;
+    background-color: #f2f6d3;
+    border-radius: 8px;
+    animation: pulse 2s infinite alternate; /* Применяем анимацию "pulse" */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ 
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1); /* Начальный масштаб */
+    }
+    50% {
+      transform: scale(1.1); /* Увеличение масштаба */
+    }
+    100% {
+      transform: scale(1); /* Возврат к начальному масштабу */
+    }
+  }
+  
+  .skeleton-container h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #282828;
+    margin-bottom: 10%;
+    animation: fadeInOut 2s infinite alternate; /* Анимация для текста */
+  }
