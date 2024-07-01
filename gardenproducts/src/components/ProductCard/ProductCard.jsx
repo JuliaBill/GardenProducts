@@ -28,4 +28,4 @@ export default function ProductCard({ id, image, title, price, discont_price }) 
       </div>
     </div>
   )
-}
+} 
