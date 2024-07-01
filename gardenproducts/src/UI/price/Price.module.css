@@ -19,7 +19,7 @@
     padding: 4px 8px;
     gap: 10px;
     border-radius: var(--radius-small, 6px);
-    background: var(--green, #92a134);
+    background: var(--orange, #F26D22);
     color: var(--txt-white, #FFF);
     font-size: 20px;
     font-weight: 600;

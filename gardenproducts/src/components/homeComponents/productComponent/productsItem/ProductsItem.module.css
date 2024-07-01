@@ -8,8 +8,7 @@
     overflow: hidden;
     border-radius: var(--radius-big, 12px);
     border: 1px solid var(--grey-divider,#8B8B8B);
-}
-
+} 
 .products_link {
     text-decoration: none;
 }
@@ -22,6 +21,7 @@
     object-fit: cover;
     overflow: hidden;
     border-bottom: 1px solid var(--grey-divider, #8B8B8B);
+  
 }
 
 
@@ -48,6 +48,7 @@
     align-items: flex-start;
     gap: 16px;
     flex: 1 0 0;
+    
 }
 
 .image_container {
