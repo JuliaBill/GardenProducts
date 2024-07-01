@@ -1,6 +1,6 @@
 
 import React from 'react'
-import s from './style.module.css'
+import s from './style.module.scss'
 import { BASE_URL } from '../../../src/config.js'
 
 export default function ProductCard({ id, image, title, price, discont_price }) {

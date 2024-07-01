@@ -96,7 +96,7 @@ a {
   }
 
   .footer__item {
-    background-color: $bg-gray;
+    background-color: $bg-black;
 
     a {
       color: $txt-white;
@@ -105,7 +105,7 @@ a {
 
   .breadcrumbs__item {
     a {
-      color: $grey;
+      color: $bg-black;
       &.active {
         color: $txt-white;
       }
@@ -210,8 +210,8 @@ a {
   --grey: #8b8b8b;
   --light-grey: #F2F6D3;
 
-  --bg-gray: #cac7c7;
-  --bg-light-grey: #f1f3f4;
+  --bg-gray: #FFFF;
+  --bg-light-grey:#F2F6D3 ;
 
   --txt-black: #e6e3e3;
   --txt-white: #fff;
