@@ -32,7 +32,6 @@ const SingleCategoryPage = () => {
   if (isError) {
     return <p>Error loading products.</p>
   }
-
   // Показываем скелетон в течение 4 секунд или пока данные загружаются
   if (isLoading || showSkeleton) {
     return (
@@ -41,7 +40,7 @@ const SingleCategoryPage = () => {
         <BreadCrumbs />
         <div className="grid">
           {/* Отображаем заголовок страницы */}
-          <h2 className="grid__title">{category.category.title}</h2>
+          <h2 className="grid__title">{category?.category.title}</h2>
           {/* Отображаем панель фильтрации */}
           <FiltrationBar showDiscountOption={true} />
           {/* Отображаем скелетон списка продуктов */}
@@ -56,7 +55,7 @@ const SingleCategoryPage = () => {
     <section className="container">
       <BreadCrumbs />
       <div className="grid">
-        <h2 className="grid__title">{category.category.title}</h2>
+        <h2 className="grid__title">{category?.category.title}</h2>
 
         <FiltrationBar showDiscountOption={true} />
 
