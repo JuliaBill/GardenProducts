@@ -6,7 +6,7 @@ import CategoryItem from '../categoryItem/CategoryItem'
 
 const CategoryContainer = ({ limitDisplay = true }) => {
   const { data: categories, isLoading, error } = useFetchCategoriesQuery()
-  console.log(categories)
+
 
   if (isLoading) return <p>Loading categories...</p>
   if (error) return <p>Error loading categories: {error.message}</p>

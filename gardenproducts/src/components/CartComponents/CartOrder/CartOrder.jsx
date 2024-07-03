@@ -71,7 +71,7 @@ export default function CartOrder({ basketCart }) {
         handleDiscountSubmit={handleDiscountSubmit}
         classInput={s.input}
         classBtn={s.discount_btn}
-        txtBtn="Checkout"
+        txtBtn="Order"
         cartModalWindow={ModalWindow}
       />
       {showModal && (
