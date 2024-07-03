@@ -5,24 +5,27 @@ import { addProduct } from '../../store/slices/cartSlice'
 import { BASE_URL } from '../../config'
 import { addLikedProduct, removeLikedProduct } from '../../store/slices/likedProductsSlice'
 import { Link } from 'react-router-dom'
-import heart from '../../media/icons/heart.svg'
+
+import heart from '../../media/icons/heart.svg' // Импорт иконки сердца
 import greenHeart from '../../media/icons/greenHeart.svg'
 import './DiscountPopUp.scss'
 
 const DiscountPopUp = ({ onClose }) => {
   const dispatch = useDispatch()
-  const { data: products } = useFetchAllProductsQuery()
-  const [discountedProduct, setDiscountedProduct] = useState(null)
-  const [isOpen, setIsOpen] = useState(false)
-  const [isDiscountProductAdded, setIsDiscountProductAdded] = useState(false)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const { data: products } = useFetchAllProductsQuery() // Получение данных всех продуктов
+  const [discountedProduct, setDiscountedProduct] = useState(null) // Состояние для хранения дисконтного продукта
+  const [isOpen, setIsOpen] = useState(false) // Состояние для открытия/закрытия модального окна
+  const [isDiscountProductAdded, setIsDiscountProductAdded] = useState(false) // Состояние для отслеживания добавления дисконтного продукта в корзину
+  const [isModalOpen, setIsModalOpen] = useState(false) // Состояние для модального окна
 
+  // Закрытие модального окна при клике на задний фон
   const handleBackdropClick = (event) => {
     if (event.target === event.currentTarget) {
       onClose()
     }
   }
 
+  // Проверка, добавлялся ли дисконтный товар сегодня
   useEffect(() => {
     const today = new Date().toDateString()
     const lastDiscountDate = localStorage.getItem('lastDiscountDate')
@@ -34,6 +37,7 @@ const DiscountPopUp = ({ onClose }) => {
     }
   }, [])
 
+  // Выбор случайного дисконтного продукта при загрузке
   useEffect(() => {
     if (products && products.length > 0) {
       const nonDiscountedProducts = products.filter((product) => product.discont_price === null)
@@ -41,13 +45,14 @@ const DiscountPopUp = ({ onClose }) => {
         const randomProduct = nonDiscountedProducts[Math.floor(Math.random() * nonDiscountedProducts.length)]
         setDiscountedProduct({
           ...randomProduct,
-          discountedPrice: +(randomProduct.price * 0.5).toFixed(2),
+          discountedPrice: +(randomProduct.price * 0.5).toFixed(2), // Установка цены со скидкой 50%
         })
         setIsOpen(true)
       }
     }
   }, [products, isDiscountProductAdded])
 
+  // Добавление дисконтного продукта в корзину
   const handleAddToCart = () => {
     if (discountedProduct) {
       // Добавляем продукт со скидкой 50%
@@ -55,29 +60,32 @@ const DiscountPopUp = ({ onClose }) => {
         ...discountedProduct,
         quantity: 1,
         price: discountedProduct.discountedPrice,
-        oldPrice: discountedProduct.price,
+        oldPrice: discountedProduct.price, // Сохраняем старую цену
       }
       dispatch(addProduct(discountedProductWithOldPrice))
 
       setIsDiscountProductAdded(true)
 
-// Сохраняем текущую дату в localStorage
+      // Сохраняем текущую дату в localStorage
       const today = new Date().toDateString()
       localStorage.setItem('lastDiscountDate', today)
 
+      // Закрываем модальное окно после добавления товара в корзину
       setIsModalOpen(false)
     }
   }
 
+  // Закрытие модального окна
   const handleClosePopup = () => {
     setIsOpen(false)
     setDiscountedProduct(null)
   }
 
+  // Проверка, лайкнут ли продукт
   const likedProducts = useSelector((state) => state.likedProducts.likedProducts)
   const isLiked = likedProducts.some((likedProduct) => likedProduct?.id === discountedProduct?.id)
 
-  
+  // Переключение состояния лайка продукта
   const toggleLiked = () => {
     if (isLiked) {
       dispatch(removeLikedProduct(discountedProduct))
@@ -113,7 +121,7 @@ const DiscountPopUp = ({ onClose }) => {
               <div className="discount-popup__price">
                 <p className="discount-popup__product-discounted-price">${discountedProduct.discountedPrice}</p>
                 <p className="discount-popup__product-price">
-                  <del>${discountedProduct.price}</del>
+                  <del>${discountedProduct.price}</del> {/* Отображение зачёркнутой оригинальной цены */}
                 </p>
               </div>
             </div>

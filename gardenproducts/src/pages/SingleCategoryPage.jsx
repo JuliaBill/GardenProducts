@@ -31,7 +31,7 @@ const SingleCategoryPage = () => {
         <BreadCrumbs />
         <div className="grid">
           {/* Отображаем заголовок страницы */}
-          <h2 className="grid__title">Loading...</h2>
+
           {/* Отображаем панель фильтрации */}
           <FiltrationBar showDiscountOption={true} />
           {/* Отображаем скелетон списка продуктов */}
@@ -50,7 +50,7 @@ const SingleCategoryPage = () => {
     <section className="container">
       <BreadCrumbs />
       <div className="grid">
-        <h2 className="grid__title">{category.category.title}</h2>
+
         <FiltrationBar showDiscountOption={true} />
         <ul className="grid__wrapper">
           {products && products.map((product) => <ProductItem key={product.id} el={product} />)}
