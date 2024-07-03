@@ -13,7 +13,7 @@ form {
     font-weight: 600;
     font-size: 1.25rem;
     line-height: 130%;
-
+  
     input[type='number'],
     select {
       border: 0.0625rem solid $grey-divider;
@@ -22,6 +22,7 @@ form {
       width: 7rem;
       height: 2.25rem;
       font-size: 0.9375rem;
+      background-color: white;
 
       &::placeholder {
         vertical-align: middle;
@@ -42,6 +43,7 @@ form {
         position: relative;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
+        background-color: white;
 
         &::before {
           content: '';

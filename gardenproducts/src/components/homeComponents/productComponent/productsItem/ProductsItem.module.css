@@ -8,6 +8,7 @@
     overflow: hidden;
     border-radius: var(--radius-big, 12px);
     border: 1px solid var(--grey-divider,#8B8B8B);
+    background-color: white;
 } 
 .products_link {
     text-decoration: none;
