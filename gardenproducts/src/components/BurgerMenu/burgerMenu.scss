@@ -1,0 +1,340 @@
+@import '../../style/variables';
+
+.header__menu {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .header__menu {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+  }
+
+  .header__menu::before,
+  .header__menu::after,
+  .header__menu span {
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: calc(50% - 0.125rem);
+    width: 2.75rem;
+    height: 0.25rem;
+    transform-origin: 50% 50%;
+  }
+
+  .header__menu::before {
+    transform: translateY(-0.9375rem);
+  }
+
+  .header__menu::after {
+    transform: translateY(0.9375rem);
+  }
+
+  .header__menu.active::before {
+    animation: moveTopLine 0.4s forwards;
+  }
+
+  .header__menu.active span {
+    animation: moveMidLine 0.4s forwards;
+  }
+
+  .header__menu.active::after {
+    animation: moveBotLine 0.4s forwards;
+  }
+
+  .header__menu.unactive::before {
+    animation: moveTopLineRev 0.4s forwards;
+  }
+
+  .header__menu.unactive span {
+    animation: moveMidLineRev 0.4s forwards;
+  }
+
+  .header__menu.unactive::after {
+    animation: moveBotLineRev 0.4s forwards;
+  }
+
+  @keyframes moveTopLine {
+    0% {
+      transform: scale(1) translateY(-0.9375rem);
+    }
+    25% {
+      transform: scale(1.5) translateY(-0.6875rem);
+    }
+    50% {
+      transform: scale(1) translateY(-0.9375rem);
+    }
+    75% {
+      transform: scale(1) translateY(0);
+    }
+    100% {
+      transform: scale(1) translateY(0) rotate(-45deg);
+    }
+  }
+
+  @keyframes moveMidLine {
+    0% {
+      transform: scale(1);
+    }
+    25% {
+      transform: scale(1.5);
+    }
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    75% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes moveBotLine {
+    0% {
+      transform: scale(1) translateY(0.9375rem);
+    }
+    25% {
+      transform: scale(1.5) translateY(0.6875rem);
+    }
+    50% {
+      transform: scale(1) translateY(0.9375rem);
+    }
+    75% {
+      transform: scale(1) translateY(0);
+    }
+    100% {
+      transform: scale(1) translateY(0) rotate(45deg);
+    }
+  }
+
+  @keyframes moveTopLineRev {
+    0% {
+      transform: scale(1) translateY(0) rotate(-45deg);
+    }
+    25% {
+      transform: scale(1.5) translateY(0) rotate(-45deg);
+    }
+    50% {
+      transform: scale(1) translateY(0) rotate(-45deg);
+    }
+    75% {
+      transform: scale(1) translateY(0) rotate(0);
+    }
+    100% {
+      transform: scale(1) translateY(-0.9375rem);
+    }
+  }
+
+  @keyframes moveMidLineRev {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes moveBotLineRev {
+    0% {
+      transform: scale(1) translateY(0) rotate(45deg);
+    }
+    25% {
+      transform: scale(1.5) translateY(0) rotate(45deg);
+    }
+    50% {
+      transform: scale(1) translateY(0) rotate(45deg);
+    }
+    75% {
+      transform: scale(1) translateY(0) rotate(0);
+    }
+    100% {
+      transform: scale(1) translateY(0.9375rem);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header__menu {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+  }
+
+  .header__menu::before,
+  .header__menu::after,
+  .header__menu span {
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: calc(50% - 0.125rem);
+    width: 2.25rem;
+    height: 0.1875rem;
+    transform-origin: 50% 50%;
+    background-color: #fff;
+  }
+
+  .header__menu::before {
+    transform: translateY(-0.625rem);
+  }
+
+  .header__menu::after {
+    transform: translateY(0.625rem);
+  }
+
+  .header__menu.active::before {
+    animation: moveTopLine 0.4s forwards;
+  }
+
+  .header__menu.active span {
+    animation: moveMidLine 0.4s forwards;
+  }
+
+  .header__menu.active::after {
+    animation: moveBotLine 0.4s forwards;
+  }
+
+  .header__menu.unactive::before {
+    animation: moveTopLineRev 0.4s forwards;
+  }
+
+  .header__menu.unactive span {
+    animation: moveMidLineRev 0.4s forwards;
+  }
+
+  .header__menu.unactive::after {
+    animation: moveBotLineRev 0.4s forwards;
+  }
+
+  @keyframes moveTopLine {
+    0% {
+      transform: scale(1) translateY(-0.625rem);
+    }
+    25% {
+      transform: scale(1.5) translateY(-0.6875rem);
+    }
+    50% {
+      transform: scale(1) translateY(-0.625rem);
+    }
+    75% {
+      transform: scale(1) translateY(0);
+    }
+    100% {
+      transform: scale(1) translateY(0) rotate(-45deg);
+    }
+  }
+
+  @keyframes moveMidLine {
+    0% {
+      transform: scale(1);
+    }
+    25% {
+      transform: scale(1.5);
+    }
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    75% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes moveBotLine {
+    0% {
+      transform: scale(1) translateY(0.625rem);
+    }
+    25% {
+      transform: scale(1.5) translateY(0.6875rem);
+    }
+    50% {
+      transform: scale(1) translateY(0.625rem);
+    }
+    75% {
+      transform: scale(1) translateY(0);
+    }
+    100% {
+      transform: scale(1) translateY(0) rotate(45deg);
+    }
+  }
+
+  @keyframes moveTopLineRev {
+    0% {
+      transform: scale(1) translateY(0) rotate(-45deg);
+    }
+    25% {
+      transform: scale(1.5) translateY(0) rotate(-45deg);
+    }
+    50% {
+      transform: scale(1) translateY(0) rotate(-45deg);
+    }
+    75% {
+      transform: scale(1) translateY(0) rotate(0);
+    }
+    100% {
+      transform: scale(1) translateY(-0.625rem);
+    }
+  }
+
+  @keyframes moveMidLineRev {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes moveBotLineRev {
+    0% {
+      transform: scale(1) translateY(0) rotate(45deg);
+    }
+    25% {
+      transform: scale(1.5) translateY(0) rotate(45deg);
+    }
+    50% {
+      transform: scale(1) translateY(0) rotate(45deg);
+    }
+    75% {
+      transform: scale(1) translateY(0) rotate(0);
+    }
+    100% {
+      transform: scale(1) translateY(0.625rem);
+    }
+  }
+}

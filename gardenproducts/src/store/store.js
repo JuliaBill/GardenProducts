@@ -2,8 +2,8 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import themeReducer from "./slices/themeSlice";
 import filterReducer from "./slices/filterSlice";
 import { apiSlice } from "./slices/apiSlice";
-// import cartReducer from "./slices/cartSlice";
-// import likedProductsReducer from "./slices/likedProductsSlice";
+import cartReducer from "./slices/cartSlice";
+import likedProductsReducer from "./slices/likedProductsSlice";
 import {
   FLUSH,
   PAUSE,

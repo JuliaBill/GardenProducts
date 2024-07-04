@@ -38,4 +38,5 @@ export const {
   sortedChange,
   resetFilter,
 } = filterSlice.actions;
+
 export default filterSlice.reducer;

@@ -1,0 +1,12 @@
+.cartProductsContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 16px;
+  }
+  
+  .info {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
