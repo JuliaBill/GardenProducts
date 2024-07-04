@@ -59,11 +59,11 @@
 
 .icons_wrapper {
     position: absolute;
-    top: 30px;
+    top: 16px;
     right: 5px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 
 }
 
