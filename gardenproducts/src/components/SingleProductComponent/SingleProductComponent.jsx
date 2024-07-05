@@ -11,7 +11,7 @@ import heart from '../../media/icons/heart.svg' // Импорт иконки с�
 import heartWhite from '../../media/icons/heartWhite.svg'
 import greenHeart from '../../media/icons/greenHeart.svg'
 import { addProduct } from '../../store/slices/cartSlice.js'
-import BtnCard, { ButtonTypes } from '../../UI/BtnCard/BtnCart.jsx'
+
 
 // Компонент для модального окна
 const Modal = ({ src, alt, onClose }) => (

@@ -21,8 +21,8 @@ const rootReducer = combineReducers({
   [apiSlice.reducerPath]: apiSlice.reducer,
   theme: themeReducer,
   filter: filterReducer,
-  cart: cartReducer,
-  likedProducts: likedProductsReducer,
+  // cart: cartReducer,
+  // likedProducts: likedProductsReducer,
 });
 
 const persistConfig = {
