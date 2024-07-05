@@ -7,6 +7,7 @@ import { toggleTheme } from '../../store/slices/themeSlice'
 import './Header.scss'
 import '../../style/app.scss'
 
+// import { SlHeart as FavIcon } from 'react-icons/sl'
 import logo from '../../media/icons/logo.svg'
 import dayToggle from '../../media/icons/modeDay.svg'
 import nightToggle from '../../media/icons/modeNight.svg'
