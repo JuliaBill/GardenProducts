@@ -16,7 +16,11 @@ import shoppingBagWhite from '../../media/icons/shoppingBagWhite.svg'
 import heart from '../../media/icons/heart.svg'
 import heartWhite from '../../media/icons/heartWhite.svg'
 
+import DiscountPopUp from '../../components/DiscountPopUp/DiscountPopUp'
 import DiscountButton from '../../components/DiscountButton/DiscountButton'
+
+import BurgerMenu from './../../components/BurgerMenu/BurgerMenu'
+
 
 
 const Header = () => {
